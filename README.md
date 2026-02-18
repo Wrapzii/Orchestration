@@ -1,67 +1,82 @@
 # Orchestration
 
-Coordinate specialized AI agents (Orchestrator, Planner, Designer, Coder) to break down complex tasks, parallelize work, and deliver production-ready code with clear accountability.
+Coordinate specialized AI agents to break down complex tasks, parallelize work, and deliver production-ready code with clear accountability.
 
 ---
 
 ## Quick Start
 
-1. **Copy agent files**: Clone this repo, copy `.github/agents/` (Orchestrator.agent.md, Planner.agent.md, Designer.agent.md, Coder.agent.md) into your project.
+1. **Copy agent files**: Clone this repo, copy `.github/agents/` into your project.
 
 2. **Configure VS Code**: Install GitHub Copilot extension (v1.206+) and GitHub Copilot Chat. Open VS Code settings and verify `github.copilot.enable` and `github.copilot.chat.enabled` are true.
 
-3. **Enable experimental sub-agents**: Go to GitHub Copilot extension settings, search for "experimental", and enable `github.copilot.advanced.experimental.subagents`. (Critical: this allows agents to use optimal models.)
+3. **Enable experimental sub-agents**: Go to GitHub Copilot extension settings, search for "experimental", and enable `github.copilot.advanced.experimental.subagents`.
 
-4. **Customize agent files**: Update each `.agent.md` with your repo's constraints, patterns, and APIs. Example: Update Coder.agent.md with your stack (C#/WPF, Python, etc.), test framework, build command, and offline-first rules.
+4. **Customize agent files**: Update each `.agent.md` with your repo's constraints, patterns, and APIs.
 
-5. **Test**: Open Copilot Chat in VS Code and ask Orchestrator to break down a feature request. Verify it delegates to Planner → Designer (if UI) → Coder.
-
----
-
-## The Four Agents
-
-**Orchestrator**: Analyzes requests, decomposes into tasks, delegates to specialists, reconciles outputs. Never writes code. Ensures Planner always goes first and identifies parallelizable work.
-
-**Planner**: Researches codebase, verifies APIs, identifies edge cases, outputs ordered implementation steps. Never writes code. Produces structured plans (summary, steps, edge cases, open questions).
-
-**Designer**: Owns all visual and interaction decisions—layout, accessibility, design system consistency. Never implements. Outputs UX/UI spec with WCAG notes and design token references.
-
-**Coder**: Implements from Planner's plan and Designer's spec, runs tests, reports results. Follows repo constraints (offline-first, MVVM, data integrity). Consult docs for external APIs (assume training data is outdated).
+5. **Test**: Open Copilot Chat in VS Code and ask Orchestrator to break down a feature request.
 
 ---
 
-## Core Rules
+## Agents
 
-- **Orchestrator never implements** — Clear separation prevents context collapse.
-- **Planner produces plans, not code** — Reviewable plans enable recovery; code generation is Coder's job.
-- **Designer owns all UI decisions** — Prevents ad-hoc UX; ensures consistency.
-- **Coder respects plan & spec** — Ensures accountability; never silently deviate.
-- **All handoffs are structured** — Reduces overhead; input/output formats are explicit.
-- **Repo constraints are universal** — Offline-first, sync safety, MVVM, no UI regressions apply everywhere.
+| Agent | Model | Role |
+|-------|-------|------|
+| **Orchestrator** | Claude Opus 4.6 | Decomposes requests, delegates, coordinates, never implements |
+| **Planner** | GPT-5.3-Codex | Research, edge cases, ordered implementation plan (no code) |
+| **Designer** | Gemini 3 Pro | Designs **and implements** all UI/UX changes |
+| **MasterCoder** | Claude Haiku 4.6 | Classifies tasks, dispatches Coder/FastCoder in parallel |
+| **Coder** | GPT-5.3-Codex | Complex implementation, multi-file changes, architecture |
+| **FastCoder** | Claude Haiku 4.6 | Simple, single-file tasks (≤5 min); escalates if ambiguous |
+| **Reviewer** | Claude Opus 4.6 | End-of-session multi-model review (parallel Opus + Gemini + Codex) |
 
 ---
 
 ## How It Works
 
-User asks Orchestrator: "Add CSV export with offline queueing." → Orchestrator delegates: Planner researches data patterns and offline queue; Designer specs button placement and states; Coder implements all three in parallel where possible; Orchestrator verifies plan/spec alignment, tests pass, and risks are documented.
+```
+User → Orchestrator
+         ├── Planner (plan, no code)
+         ├── Designer (UI/UX design + implementation, parallel if independent)
+         ├── MasterCoder (coding coordinator)
+         │     ├── FastCoder (simple tasks, parallel)
+         │     └── Coder (complex tasks, parallel)
+         └── Reviewer (end-of-session, parallel 3-model review)
+```
+
+**Example**: "Add CSV export with offline queueing."
+1. Orchestrator → Planner: plan data patterns and offline queue.
+2. Orchestrator → MasterCoder: implement per plan.
+3. MasterCoder → FastCoder (update config) + Coder (queue logic) in parallel.
+4. Orchestrator → Reviewer: review all changes before reporting back.
 
 ---
 
-## Extending the Pattern
+## Core Rules
 
-The Core 4 are a foundation, not a ceiling. Add custom agents for high-value, repetitive work:
+- **Orchestrator never implements** — prevents context collapse.
+- **Designer implements** — owns both design decisions and their code changes.
+- **MasterCoder parallelizes** — runs FastCoder and Coder concurrently on independent tasks.
+- **Reviewer runs at session end** — three models in parallel, deduplicated findings.
+- **All handoffs are structured** — input/output formats are explicit.
 
-- **Validator**: Check Coder's output against Planner requirements and Designer spec. Use a faster model. Invoke after Coder on data/security/offline-critical features.
-- **Tester**: Black-box testing, edge case discovery.
-- **SecurityAuditor**: Vulnerability scanning.
+---
 
-**Principle**: Add only agents that reduce Orchestrator load, parallelize work, and avoid redundancy. Target: Core 4 + 1–2 custom agents max.
+## Model Configuration
+
+Models are set per-agent in the frontmatter of each `.agent.md` file. To swap a model, edit the `model:` field in the relevant agent file — no code changes needed.
+
+Current assignments:
+- Orchestrator/Reviewer: Claude Opus 4.6 (reasoning, coordination)
+- MasterCoder/FastCoder: Claude Haiku 4.6 (speed, lightweight dispatch)
+- Planner/Coder: GPT-5.3-Codex (deep code understanding)
+- Designer: Gemini 3 Pro (visual/UI strength)
 
 ---
 
 ## Contributing
 
-Test the pattern on real tasks in your codebase. Share what works: Which delegation patterns are most effective? Where did agents struggle? Open GitHub issues or PRs with results, improved templates, and repo-specific agent prompts. Include task summary, agents used, what went well, what could improve, and suggested changes.
+Test the pattern on real tasks in your codebase. Open GitHub issues or PRs with results, improved templates, and repo-specific agent prompts.
 
 ---
 
