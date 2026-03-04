@@ -28,11 +28,11 @@ Think in models: task outputs should be cross-checked across raptorâ€‘mini, gptâ
 - **Coder**: anything bigger, ambiguous, or architectural.
 
 ### Workflow (condensed)
-1. Ask Planner. 
-2. Add Designer if UI. 
-3. Launch Coder/FastCoder. 
+1. Ask FPlanner. 
+2. Add FDesigner if UI. 
+3. Launch FCoder/FFastCoder. 
 4. Verify builds/tests. 
-5. Call reviewers in parallel.
+5. Call Freviewers in parallel.
 6. Synthesize answer.
 7. Rerun if needed
 
