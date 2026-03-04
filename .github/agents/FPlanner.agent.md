@@ -1,5 +1,5 @@
 ---
-name: planner
+name: Fplanner
 description: Researches the codebase and external docs, identifies edge cases, and produces implementation plans (no code).
 tools: ["read", "search", "web", "agent", "execute", "edit", "todo", "vscode/memory", "context7/*"]
 model: GPT-5 mini (copilot)

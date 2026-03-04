@@ -1,5 +1,5 @@
 ---
-name: coder
+name: Fcoder
 description: Implements features and fixes with verification and tests, following repo conventions and consulting docs (Context7) when using external APIs.
 tools: ["read", "vscode", "search", "edit", "execute", "web", "agent", "todo", "vscode/memory", "github/*"]
 model: Raptor mini (Preview) (copilot)

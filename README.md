@@ -8,13 +8,13 @@ Coordinate specialized AI agents (Orchestrator, Planner, Designer, Coder) to bre
 
 ## Quick Start
 
-1. **Copy agent files**: Clone this repo (use the `Free-Orchestration` branch), copy `.github/agents/` (Orchestrator.agent.md, Planner.agent.md, Designer.agent.md, Coder.agent.md) into your project.
+1. **Copy agent files**: Clone this repo (use the `Free-Orchestration` branch), copy `.github/agents/` (FOrchestrator.agent.md, FPlanner.agent.md, FDesigner.agent.md, FCoder.agent.md) into your project.
 
 2. **Configure VS Code**: Install GitHub Copilot extension (v1.206+) and GitHub Copilot Chat. Open VS Code settings and verify `github.copilot.enable` and `github.copilot.chat.enabled` are true.
 
 3. **Enable experimental sub-agents**: Go to GitHub Copilot extension settings, search for "experimental", and enable `chat.customAgentInSubagent.enabled`. (Critical: this allows agents to use optimal models.)
 
-4. **Customize agent files**: Update each `.agent.md` with your repo's constraints, patterns, and APIs. Example: Update Coder.agent.md with your stack (C#/WPF, Python, etc.), test framework, build command, and offline-first rules.
+4. **Customize agent files**: Update each `.agent.md` with your repo's constraints, patterns, and APIs. Example: Update FCoder.agent.md with your stack (C#/WPF, Python, etc.), test framework, build command, and offline-first rules.
 
 5. **Test**: Open Copilot Chat in VS Code and ask Orchestrator to break down a feature request. Verify it delegates to Planner → Designer (if UI) → Coder.
 

@@ -1,7 +1,8 @@
 ---
-name: orchestrator
+name: Forchestrator
 description: Breaks down complex requests, delegates to specialist subagents (Planner/Designer/Coder), coordinates results, and reports back. Never implements directly.
-tools: [vscode/memory, agent/runSubagent]
+agents: [Fplanner, Fdesigner, Fcoder, Ffastcoder, Freview-4.1, Freview-5mini, Freview-raptor]
+tools: [vscode/memory, agent/runSubagent, agent]
 model: Raptor mini (Preview) (copilot)
 target: vscode
 ---

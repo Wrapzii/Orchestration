@@ -1,5 +1,5 @@
 ---
-name: fastcoder
+name: Ffastcoder
 description: Executes simple, well-defined implementation tasks quickly with minimal overhead. Requires crystal-clear specs from Planner. For straightforward changes only (config updates, single-file edits, bug fixes under 5 minutes estimated work).
 tools: ["read", "vscode", "search", "edit", "execute", "web", "agent", "todo"]
 model: GPT-4.1 (copilot)

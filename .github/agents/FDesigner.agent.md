@@ -1,5 +1,5 @@
 ---
-name: designer
+name: Fdesigner
 description: Owns UX/UI decisions.
 tools: ["read", "search", "vscode", "edit", "execute", "web", "agent", "todo", "vscode/memory", "context7/*"]
 model: GPT-5 mini (copilot)
