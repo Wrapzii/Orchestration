@@ -4,6 +4,7 @@ description: Researches the codebase and external docs, identifies edge cases, a
 tools: ["read", "search", "web", "agent", "execute", "edit", "todo"]
 model: ["Claude Sonnet 4.6 (copilot)", "GPT-5.2 (copilot)"]
 target: vscode
+user-invocable: false
 ---
 
 You are the **Planner**.

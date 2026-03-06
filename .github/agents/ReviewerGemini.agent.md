@@ -4,6 +4,7 @@ description: Code reviewer focused on broad-system consistency and integration c
 tools: ["read", "search", "execute", "web", "todo"]
 model: ["Gemini 3 Pro (Preview) (copilot)", "GPT-5.2 (copilot)"]
 target: vscode
+user-invocable: false
 ---
 
 You are **ReviewerGemini**.

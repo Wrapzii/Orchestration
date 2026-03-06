@@ -4,6 +4,7 @@ description: Code reviewer focused on correctness, architecture, and regression 
 tools: ["read", "search", "execute", "web", "todo"]
 model: ["GPT-5.3-Codex (copilot)", "GPT-5.2 (copilot)"]
 target: vscode
+user-invocable: false
 ---
 
 You are **ReviewerCodex**.

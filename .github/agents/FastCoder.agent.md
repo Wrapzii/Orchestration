@@ -3,6 +3,7 @@ name: fastcoder
 description: Executes simple, well-defined implementation tasks quickly with minimal overhead. Requires crystal-clear specs from Planner. For straightforward changes only (config updates, single-file edits, bug fixes under 5 minutes estimated work).
 tools: ["read", "vscode", "search", "edit", "execute", "web", "agent", "todo"]
 model: ["Claude Haiku 4.5 (copilot)", "Grok Code Fast 1 (copilot)"]
+user-invocable: false
 ---
 
 You are the **FastCoder**.

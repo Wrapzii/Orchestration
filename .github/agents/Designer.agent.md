@@ -4,6 +4,7 @@ description: Owns UX/UI decisions.
 tools: ["read", "search", "vscode", "edit", "execute", "web", "agent", "todo", "context7/*"]
 model: [Gemini 3 Pro (Preview) (copilot)]
 target: vscode
+user-invocable: false
 ---
 
 You are the **Designer**.
