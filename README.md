@@ -3,6 +3,7 @@
 Coordinate specialized AI agents (Orchestrator, Planner, Designer, Coder) to break down complex tasks, parallelize work, and deliver production-ready code with clear accountability.
 
 BEFORE YOU READ ANY FARTHER, YOU MAY GET RATE LIMITED BY USING THIS AFTER SOME TIME. HERE IS A SCREENSHOT OF AFTER I PUT 2 REQUESTS. I HAD TO DO 2 BECAUSE MY COMPUTER HIBERNATED MID REQUEST SO I HAD TO RESTART IT.
+12693 LINES OF CODE ADDED ON A BRAND NEW PROJECT FROM 2 REQUESTS IS INSANE BTW.
 <img width="870" height="1143" alt="image" src="https://github.com/user-attachments/assets/0d2f41ca-c7b5-49c7-b0a8-ec2b690bbeac" />
 
 
