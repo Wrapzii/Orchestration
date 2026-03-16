@@ -2,7 +2,7 @@
 name: planner
 description: Researches the codebase and external docs, identifies edge cases, and produces implementation plans (no code).
 tools: ["read", "search", "web", "agent", "execute", "edit", "todo"]
-model: ["Claude Sonnet 4.6 (copilot)", "GPT-5.2 (copilot)"]
+model: ["Claude Sonnet 4.6 (copilot)", "GPT-5.4 (copilot)"]
 target: vscode
 user-invocable: false
 ---

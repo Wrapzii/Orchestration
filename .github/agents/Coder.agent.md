@@ -2,7 +2,7 @@
 name: coder
 description: Implements features and fixes with verification and tests, following repo conventions and consulting docs (fetch) when using external APIs.
 tools: ["read", "vscode", "search", "edit", "execute", "web", "agent", "todo"]
-model: ["GPT-5.3-Codex (copilot)"]
+model: ["GPT-5.4 (copilot)", "GPT-5.3-Codex (copilot)"]
 user-invocable: false
 ---
 
@@ -48,4 +48,5 @@ You are the **Coder**.
 	- `testsRun` + pass/fail
 	- `risks`
 	- `readyForReview` (true/false)
+
 
